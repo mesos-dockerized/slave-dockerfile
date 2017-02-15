@@ -9,5 +9,6 @@ RUN DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]'); CODENAME=$(lsb_relea
 
 RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get -y install mesos
+RUN curl -fLsS https://get.docker.com/ | sh
 
 ENTRYPOINT ["mesos-slave"]
