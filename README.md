@@ -1,8 +1,26 @@
+# Mesos Slave docker image
+
 [![Build Status](https://travis-ci.org/mesos-dockerized/slave-dockerfile.svg?branch=master)](https://travis-ci.org/mesos-dockerized/master-dockerfile) [![Docker Repository on Quay](https://quay.io/repository/mesosdockerized/mesos-slave/status "Docker Repository on Quay")](https://quay.io/repository/mesosdockerized/mesos-master)
 
-WIP! - Work in Progress here!!
+## Example usage
+```
+docker run -d --net=host --privileged --name=mesos-slave \
+ -e MESOS_MASTER=zk://10.91.126.223:2181/mesos \
+ -e MESOS_SWITCH_USER=0 \
+ -e MESOS_CONTAINERIZERS=mesos,docker \
+ -e MESOS_LOG_DIR=/var/log/mesos \
+ -e MESOS_IP=10.91.126.223 \
+ -e MESOS_WORK_DIR=/var/tmp/mesos \
+ -e MESOS_EXECUTOR_REGISTRATION_TIMEOUT=5mins \
+ -e MESOS_DOCKER_KILL_ORPHANS=false \
+ -e MESOS_SYSTEMD_ENABLE_SUPPORT=false \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v /cgroup:/cgroup \
+ -v /sys:/sys \
+ -v /usr/local/bin/docker:/usr/local/bin/docker \
+ quay.io/mesosdockerized/mesos-slave:latest
+```
 
-For aditional info check mesos-dockerized/mesos-cluster repository!
+Check more examples in [mesos-dockerized/mesos-cluster][mesos-cluster-repo] repository.
 
-# mesos-slave
-Mesos Slave Dockerfile
+[mesos-cluster-repo]: https://github.com/mesos-dockerized/mesos-cluster
