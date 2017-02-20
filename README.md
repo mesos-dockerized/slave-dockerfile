@@ -18,7 +18,7 @@ docker run -d --net=host --privileged --name=mesos-slave \
  -v /cgroup:/cgroup \
  -v /sys:/sys \
  -v /usr/local/bin/docker:/usr/local/bin/docker \
- quay.io/mesosdockerized/mesos-slave:1.0.0
+ quay.io/mesosdockerized/mesos-slave:1.1.0
 ```
 
 Check more examples in [mesos-dockerized/mesos-cluster][mesos-cluster-repo] repository.
