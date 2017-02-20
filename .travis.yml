@@ -1,7 +1,14 @@
-sudo: required
+language: go
+sudo: reuired
+install: true
+
+go:
+  - 1.7.5
+
+script:
+  - go get -u github.com/vbatts/git-validation
+  - git-validation -q -run DCO,short-subject -range a4b6447ef6e21133649c24f2feef333ed24021d3..HEAD
+  - ./tests/build_test.sh
 
 services:
   - docker
-
-script:
-  - ./tests/build_test.sh
