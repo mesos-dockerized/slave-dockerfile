@@ -5,11 +5,11 @@
 ## Example usage
 ```
 docker run -d --net=host --privileged --name=mesos-slave \
- -e MESOS_MASTER=zk://10.91.126.223:2181/mesos \
+ -e MESOS_MASTER=zk://{EXTERNAL_IP}:2181/mesos \
  -e MESOS_SWITCH_USER=0 \
  -e MESOS_CONTAINERIZERS=mesos,docker \
  -e MESOS_LOG_DIR=/var/log/mesos \
- -e MESOS_IP=10.91.126.223 \
+ -e MESOS_IP={EXTERNAL_IP} \
  -e MESOS_WORK_DIR=/var/tmp/mesos \
  -e MESOS_EXECUTOR_REGISTRATION_TIMEOUT=5mins \
  -e MESOS_DOCKER_KILL_ORPHANS=false \
@@ -18,7 +18,7 @@ docker run -d --net=host --privileged --name=mesos-slave \
  -v /cgroup:/cgroup \
  -v /sys:/sys \
  -v /usr/local/bin/docker:/usr/local/bin/docker \
- quay.io/mesosdockerized/mesos-slave:latest
+ quay.io/mesosdockerized/mesos-slave:1.0.0
 ```
 
 Check more examples in [mesos-dockerized/mesos-cluster][mesos-cluster-repo] repository.
